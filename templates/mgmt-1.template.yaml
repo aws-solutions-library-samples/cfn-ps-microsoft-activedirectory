@@ -176,7 +176,7 @@ Parameters:
   QSS3BucketName:
     AllowedPattern: '^[a-z0-9]+[a-z0-9\.\-]*[a-z0-9]+$'
     ConstraintDescription: Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-)
-    Default: aws-ia-us-east-1
+    Default: aws-ia
     Description: S3 bucket name for the Quick Start assets. Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-)
     Type: String
   QSS3BucketRegion:
@@ -214,7 +214,7 @@ Rules:
       - AssertDescription: To create an AD domain join user, you need to provide the secret arn.
         Assert: !Not [!Equals [!Ref NonWindowsDomainJoinSecret, '']]
 Conditions:
-  UsingDefaultBucket: !Equals [!Ref QSS3BucketName, 'aws-ia-us-east-1']
+  UsingDefaultBucket: !Equals [!Ref QSS3BucketName, 'aws-ia']
   ShouldCreateNonWindowsDomainJoinADUser: !Equals [!Ref NonWindowsDomainJoin, 'true']
 Resources:
   InstanceRole:
