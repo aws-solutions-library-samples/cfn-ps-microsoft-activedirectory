@@ -319,7 +319,7 @@ Parameters:
   QSS3BucketName:
     AllowedPattern: '^[a-z0-9]+[a-z0-9\.\-]*[a-z0-9]+$'
     ConstraintDescription: Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).
-    Default: aws-ia-us-east-1
+    Default: aws-ia
     Description: S3 bucket name for the Quick Start assets. Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-) It cannot start or end with a hyphen (-).
     Type: String
   QSS3BucketRegion:
@@ -388,7 +388,7 @@ Conditions:
   ShouldCreateNonWindowsDomainJoinADUser: !Equals [!Ref NonWindowsDomainJoin, 'true']
   ShouldCreateOneTierPkiResource: !Equals [!Ref PKI, 'One-Tier']
   ShouldCreateTwoTierPkiResource: !Equals [!Ref PKI, 'Two-Tier']
-  UsingDefaultBucket: !Equals [!Ref QSS3BucketName, 'aws-ia-us-east-1']
+  UsingDefaultBucket: !Equals [!Ref QSS3BucketName, 'aws-ia']
   AppInsightsEnabled: !Equals [!Ref SetupAppInsightsMonitoring, 'true']
   UsingDefaultAppName: !Equals [!Ref AppInsightsApplicationName, '']
 Resources:
@@ -524,7 +524,7 @@ Resources:
     Type: AWS::CloudFormation::Stack
     Properties:
       TemplateURL: !Sub
-        - 'https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QSS3KeyPrefix}submodules/quickstart-microsoft-pki/templates/one-tier.template'
+        - 'https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QSS3KeyPrefix}submodules/cfn-ps-microsoft-pki/templates/one-tier.template'
         - S3Region: !If [UsingDefaultBucket, !Ref AWS::Region, !Ref QSS3BucketRegion]
           S3Bucket: !If [UsingDefaultBucket, !Sub '${QSS3BucketName}-${AWS::Region}', !Ref QSS3BucketName]
       Parameters:
@@ -547,7 +547,7 @@ Resources:
         KeyPairName: !Ref KeyPairName
         QSS3BucketName: !Ref QSS3BucketName
         QSS3BucketRegion: !Ref QSS3BucketRegion
-        QSS3KeyPrefix: !Sub '${QSS3KeyPrefix}submodules/quickstart-microsoft-pki/'
+        QSS3KeyPrefix: !Sub '${QSS3KeyPrefix}submodules/cfn-ps-microsoft-pki/'
         S3CRLBucketName: !Ref S3CRLBucketName
         UseS3ForCRL: !Ref UseS3ForCRL
         VPCCIDR: !Ref VPCCIDR
@@ -557,7 +557,7 @@ Resources:
     Type: AWS::CloudFormation::Stack
     Properties:
       TemplateURL: !Sub
-        - 'https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QSS3KeyPrefix}submodules/quickstart-microsoft-pki/templates/two-tier.template'
+        - 'https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QSS3KeyPrefix}submodules/cfn-ps-microsoft-pki/templates/two-tier.template'
         - S3Region: !If [UsingDefaultBucket, !Ref AWS::Region, !Ref QSS3BucketRegion]
           S3Bucket: !If [UsingDefaultBucket, !Sub '${QSS3BucketName}-${AWS::Region}', !Ref QSS3BucketName]
       Parameters:
@@ -580,7 +580,7 @@ Resources:
         OrCaValidityPeriodUnits: !Ref OrCaValidityPeriodUnits
         QSS3BucketName: !Ref QSS3BucketName
         QSS3BucketRegion: !Ref QSS3BucketRegion
-        QSS3KeyPrefix: !Sub ${QSS3KeyPrefix}submodules/quickstart-microsoft-pki/
+        QSS3KeyPrefix: !Sub ${QSS3KeyPrefix}submodules/cfn-ps-microsoft-pki/
         S3CRLBucketName: !Ref S3CRLBucketName
         SubCaDataDriveSizeGiB: !Ref CaDataDriveSizeGiB
         SubCaHashAlgorithm: !Ref CaHashAlgorithm
