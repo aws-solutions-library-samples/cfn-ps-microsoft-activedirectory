@@ -1,6 +1,6 @@
 [submodule "submodules/cfn-ps-aws-vpc"]
 	path = submodules/cfn-ps-aws-vpc
-	url = git@github.com:aws-ia/cfn-ps-aws-vpc.git
+	url = https://github.com/aws-ia/cfn-ps-aws-vpc.git
 	branch = main
 [submodule "submodules/quickstart-microsoft-utilities"]
 	path = submodules/quickstart-microsoft-utilities
