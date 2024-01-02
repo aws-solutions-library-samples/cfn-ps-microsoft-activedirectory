@@ -5,3 +5,12 @@
 [submodule "docs/boilerplate"]
 	path = docs/boilerplate
 	url = https://github.com/aws-ia/aws-ia-documentation-base-common.git
+[submodule "submodules/cfn-ps-microsoft-pki"]
+	path = submodules/cfn-ps-microsoft-pki
+	url = https://github.com/aws-ia/cfn-ps-microsoft-pki.git
+[submodule "submodules/cfn-ps-microsoft-rdgateway"]
+	path = submodules/cfn-ps-microsoft-rdgateway
+	url = https://github.com/aws-ia/cfn-ps-microsoft-rdgateway.git
+[submodule "submodules/cfn-ps-microsoft-utilities"]
+	path = submodules/cfn-ps-microsoft-utilities
+	url = https://github.com/aws-ia/cfn-ps-microsoft-utilities.git
