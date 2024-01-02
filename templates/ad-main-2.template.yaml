@@ -115,7 +115,7 @@ Metadata:
       RDGWInstanceType:
         default: Remote Desktop Gateway Instance Type
       SetupAppInsightsMonitoring:
-        default: Setup Application Insights monitoring 
+        default: Setup Application Insights monitoring
       VPCCIDR:
         default: VPC CIDR
 Parameters:
@@ -183,7 +183,7 @@ Parameters:
   DataDriveSizeGiB:
     Default: '10'
     Description: Size of SYSVOL and NTDS data drive in GiB
-    MinValue: '1' 
+    MinValue: '1'
     MaxValue: '16384'
     Type: Number
   DomainDNSName:
@@ -341,11 +341,11 @@ Rules:
         - !Ref NumberOfRDGWHosts
         - '0'
     Assertions:
-      - Assert: !Not 
-          - !Equals 
+      - Assert: !Not
+          - !Equals
             - !Ref RDGWCIDR
             - ''
-        AssertDescription: if condition IncludeRDGW is true, then RDGWCIDR cannot be left empty          
+        AssertDescription: if condition IncludeRDGW is true, then RDGWCIDR cannot be left empty
 Resources:
   VPCStack:
     Type: AWS::CloudFormation::Stack
@@ -399,7 +399,7 @@ Resources:
     Type: AWS::CloudFormation::Stack
     Properties:
       TemplateURL: !Sub
-        - 'https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QSS3KeyPrefix}submodules/quickstart-microsoft-rdgateway/templates/rdgw-standalone.template.yaml'
+        - 'https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QSS3KeyPrefix}submodules/cfn-ps-microsoft-rdgateway/templates/rdgw-standalone.template.yaml'
         - S3Region: !If [UsingDefaultBucket, !Ref AWS::Region, !Ref QSS3BucketRegion]
           S3Bucket: !If [UsingDefaultBucket, !Sub '${QSS3BucketName}-${AWS::Region}', !Ref QSS3BucketName]
       Parameters:
