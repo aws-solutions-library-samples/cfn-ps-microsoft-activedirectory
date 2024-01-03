@@ -286,7 +286,7 @@ Parameters:
     Default: '10'
     Description: Size of SYSVOL and NTDS data drive in GiB
     Type: Number
-    MinValue: '1' 
+    MinValue: '1'
     MaxValue: '16384'
   DeletedObjectLifetime:
     Default: '180'
@@ -514,11 +514,11 @@ Rules:
         - !Ref NumberOfRDGWHosts
         - '0'
     Assertions:
-      - Assert: !Not 
-          - !Equals 
+      - Assert: !Not
+          - !Equals
             - !Ref RDGWCIDR
             - ''
-        AssertDescription: if condition IncludeRDGW is true, then RDGWCIDR cannot be left empty          
+        AssertDescription: if condition IncludeRDGW is true, then RDGWCIDR cannot be left empty
 Resources:
   VPCStack:
     Type: AWS::CloudFormation::Stack
@@ -587,7 +587,7 @@ Resources:
     Type: AWS::CloudFormation::Stack
     Properties:
       TemplateURL: !Sub
-        - 'https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QSS3KeyPrefix}submodules/quickstart-microsoft-rdgateway/templates/rdgw-domain.template.yaml'
+        - 'https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QSS3KeyPrefix}submodules/cfn-ps-microsoft-rdgateway/templates/rdgw-domain.template.yaml'
         - S3Region: !If [UsingDefaultBucket, !Ref AWS::Region, !Ref QSS3BucketRegion]
           S3Bucket: !If [UsingDefaultBucket, !Sub '${QSS3BucketName}-${AWS::Region}', !Ref QSS3BucketName]
       Parameters:
