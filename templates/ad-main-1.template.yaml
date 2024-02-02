@@ -7,10 +7,12 @@ Description: >-
   template and then configure them to use the AD instances fixed private IP addresses as the DNS server. **WARNING** This template creates Amazon EC2
   Windows instance and related resources. You will be billed for the AWS resources used if you create a stack from this template. (qs-1rtnidq09)
 Metadata:
-  cfn-lint: { config: { ignore_checks: [W9004, W9006, W8001] } }
-  QuickStartDocumentation:
-    EntrypointName: Parameters for deploying self-managed AD into a new VPC
-    Order: '1'
+  cfn-lint:
+    config:
+      ignore_checks:
+        - W9006
+        - E9101
+        - W9901
   AWS::CloudFormation::Interface:
     ParameterGroups:
       - Label:
@@ -602,7 +604,7 @@ Resources:
         PublicSubnet2ID: !GetAtt VPCStack.Outputs.PublicSubnet2ID
         QSS3BucketName: !Ref QSS3BucketName
         QSS3BucketRegion: !Ref QSS3BucketRegion
-        QSS3KeyPrefix: !Sub ${QSS3KeyPrefix}submodules/cfn-ps-microsoft-rdgateway/
+        QSS3KeyPrefix: !Ref QSS3KeyPrefix
         RDGWCIDR: !Ref RDGWCIDR
         RDGWInstanceType: !Ref RDGWInstanceType
         VPCID: !GetAtt VPCStack.Outputs.VPCID

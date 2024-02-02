@@ -3,7 +3,12 @@ Description: >-
   This template creates 1 Windows Server Managment Instance in a private subnet inside a VPC. **WARNING** This template creates an Amazon EC2 Windows
   instance and related resources. You will be billed for the AWS resources used if you create a stack from this template. (qs-1rteoo9fs)
 Metadata:
-  cfn-lint: { config: { ignore_checks: [W9002, W9003] } }
+  cfn-lint:
+    config:
+      ignore_checks:
+        - W9006
+        - E9101
+        - W9901
   AWS::CloudFormation::Interface:
     ParameterGroups:
       - Label:
